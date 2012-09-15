@@ -38,8 +38,10 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "home";
 $route['404_override'] = '';
+
+//$route['changemyway/(:num)$'] = 'home';
 
 
 /* End of file routes.php */
