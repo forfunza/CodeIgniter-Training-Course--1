@@ -51,7 +51,7 @@ class model_blogs extends CI_Model {
 		$this->db->where('id', $id);
 		$query = $this->db->get('blogs');
 		
-		return $query->row();
+		return $query->row();		
 	}
 	
 	public function insert($data)
