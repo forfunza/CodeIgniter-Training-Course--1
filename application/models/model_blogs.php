@@ -39,9 +39,19 @@ class model_blogs extends CI_Model {
 		return $query->result();
 	}	
 	
+	/**
+	 * Get a record 
+	 * 
+	 * @access public
+	 * @param  integer $id
+	 * @return object
+	 */
 	public function getRecord($id)
 	{
+		$this->db->where('id', $id);
+		$query = $this->db->get('blogs');
 		
+		return $query->row();
 	}
 	
 	public function insert($data)
