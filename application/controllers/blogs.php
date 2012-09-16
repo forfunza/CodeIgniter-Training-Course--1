@@ -56,7 +56,7 @@ class Blogs extends CI_Controller {
 		
 		// logic with model
 		$filters     = array(
-			'search' => 'This'
+			'search' => null
 		);
 		$currentPage = 1;
 		$limit       = 30;
