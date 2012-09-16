@@ -1,6 +1,9 @@
 <?php
 
-// define rules
+/**
+ * Form input blogs add
+ * URL: /blogs/add
+ */ 
 $config['blogs/add'] = array(
 	// input title
 	array(
@@ -16,3 +19,21 @@ $config['blogs/add'] = array(
 		'rules' => 'required'
 	)				
 );
+
+/**
+ * Form input blogs edit
+ * Inherit: blogs/add
+ * URL: /blogs/edit
+ */ 
+$config['blogs/edit'] = array_merge($config['blogs/add'], array(
+	array(
+		'field' => 'title', 
+		'label' => 'Title', 
+		'rules' => ''
+	),
+	array(
+		'field' => 'accept',
+		'label' => 'Accept',
+		'rules' => 'required'
+	)	
+));

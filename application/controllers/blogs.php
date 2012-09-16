@@ -198,9 +198,11 @@ class Blogs extends CI_Controller {
 		$entry = $this->blogs->getRecord($id);
 		
 		// POST data input
-		if ($this->input->is_post('title'))
+		if ($this->input->is_post())
 		{
-			if ($this->form_validation->run())
+			$this->load->library('form_validation');
+			
+			if ($this->form_validation->run('blogs/add'))
 			{
 				// logic with model
 				
