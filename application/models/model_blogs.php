@@ -86,10 +86,8 @@ class model_blogs extends CI_Model {
 	{
 		if (empty($id)) return false;
 		
-		echo $id;
-		
 		$this->db->where('id', $id);
-		$this->db->set('updtaed_at', 'NOW()', false);
+		$this->db->set('updated_at', 'NOW()', false);
 		if ($this->db->update('blogs', $data))
 		{
 			return $id;

@@ -206,9 +206,6 @@ class Blogs extends CI_Controller {
 			{
 				// logic with model
 				
-				// load model blogs 
-				$this->load->model('model_blogs', 'blogs');
-				
 				// prepare data ton insert
 				$data = array(
 					'user_id'    => 0,
@@ -217,22 +214,16 @@ class Blogs extends CI_Controller {
 				);
 				$blogs_id = $this->blogs->update($data, $id);
 				
-				alert( $blogs_id, true );
-				
-				/*	
-				$blogs_id = $this->blogs->insert($data);
-				
 				// if valid all processes
 				if ($blogs_id !== false)
 				{
 					// set flash data					
-					$message = 'Content has been added.';
+					$message = 'Content has been modified.';
 					$this->session->set_flashdata('success', $message);
 					
 					// redirect application to listing
-					redirect('blogs/records#added-id-'.$blogs_id);					
+					redirect('blogs/records#edited-id-'.$blogs_id);					
 				}				
-				*/
 				
 				// error something I don't know
 				show_error('Error unknown');				
