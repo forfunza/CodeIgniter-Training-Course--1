@@ -55,18 +55,24 @@ class Blogs extends CI_Controller {
 		$success = $this->session->flashdata('success');
 		
 		// logic with model
-		$filters     = array();
+		$filters     = array(
+			'search' => 'This'
+		);
 		$currentPage = 1;
 		$limit       = 30;
 		$orders      = array();
 				
 		$entries = $this->blogs->getAll($filters, $currentPage, $limit, $orders);
 		
-		print_r($entries);
+		/*echo '<pre>'.print_r($entries, true).'</pre>';
+		echo '<p>'.$this->db->last_query().'</p>';		
+		exit(0);*/
 		
+		// prepare parameters for view redering
 		$view['success'] = $success;
+		$view['entries'] = $entries;
 		
-		
+		// load view
 		$this->load->view('blogs/records', $view);
 	}
 	

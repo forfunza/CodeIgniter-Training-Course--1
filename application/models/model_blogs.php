@@ -27,8 +27,12 @@ class model_blogs extends CI_Model {
 		
 		if (isset($filters['search'])) 
 		{
+			//where title like '%[keyword]%' or body like '%[keyword%'
+			
+			
 			$search = $filters['search'];
-			$this->db->like($search);
+			$this->db->like('title', $search);
+			$this->db->or_like('body', $search);
 		}
 		
 		$query = $this->db->get();
