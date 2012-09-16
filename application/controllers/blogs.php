@@ -55,6 +55,8 @@ class Blogs extends CI_Controller {
 		
 		$view['success'] = $success;
 		
+		print_r($this->blogs->getRecord(5));
+		
 		/*
 				
 		logic code with model
