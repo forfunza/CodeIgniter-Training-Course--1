@@ -202,7 +202,7 @@ class Blogs extends CI_Controller {
 		{
 			$this->load->library('form_validation');
 			
-			if ($this->form_validation->run('blogs/add'))
+			if ($this->form_validation->run('blogs/edit'))
 			{
 				// logic with model
 				
