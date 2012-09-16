@@ -28,8 +28,8 @@
 						<?php echo ($entry->updated_at) ? $entry->updated_at : '-' ?>
 					</td>
 					<td>
-						<a href="<?php echo site_url('blogs/edit/'.$entry['id']); ?>">Edit</a>
-						<a href="<?php echo site_url('blogs/delete/'.$entry['id']); ?>">Delete</a>
+						<a href="<?php echo site_url('blogs/edit/'.$entry->id); ?>">Edit</a>
+						<a href="<?php echo site_url('blogs/delete/'.$entry->id); ?>">Delete</a>
 					</td>
 				</tr>
 				<?php endforeach; ?>
