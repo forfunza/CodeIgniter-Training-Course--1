@@ -56,7 +56,7 @@ $template['active_template'] = 'default';
 |--------------------------------------------------------------------------
 */
 
-$template['default']['template'] = 'template';
+$template['default']['template'] = 'master/template';
 $template['default']['regions'] = array(
    'header',
    'content',
@@ -65,6 +65,26 @@ $template['default']['regions'] = array(
 $template['default']['parser'] = 'parser';
 $template['default']['parser_method'] = 'parse';
 $template['default']['parse_template'] = FALSE;
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Frontend Template Configuration
+|--------------------------------------------------------------------------
+*/
+
+$template['frontend']['template'] = 'master/frontend';
+$template['frontend']['regions'] = array(
+	'header',
+	'content',
+	'footer'
+);
+$template['frontend']['parser'] = 'parser';
+$template['frontend']['parser_method'] = 'parse';
+$template['frontend']['parse_template'] = FALSE;
+
+
 
 /* End of file template.php */
 /* Location: ./system/application/config/template.php */
