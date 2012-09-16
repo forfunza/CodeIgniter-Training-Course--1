@@ -30,7 +30,7 @@
  * @version 1.4.1
  * 
  */
-class CI_Template {
+class TemplateBase {
    
    var $CI;
    var $config;
