@@ -64,6 +64,8 @@ class model_blogs extends CI_Model {
 	 */
 	public function getRecord($id)
 	{
+		if (empty($id)) return false;
+		
 		$this->db->where('id', $id);
 		$query = $this->db->get('blogs');
 		
@@ -82,7 +84,15 @@ class model_blogs extends CI_Model {
 	
 	public function update($data, $id)
 	{
+		if (empty($id)) return false;
+		
+		$this->db->where('id', $id);
 		$this->db->set('updtaed_at', 'NOW()', false);
+		if ($this->db->update('blogs', $data))
+		{
+			return $id;
+		}
+		return false;
 	}
 	
 	public function delete($id)

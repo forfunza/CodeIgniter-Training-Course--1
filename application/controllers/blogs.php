@@ -198,11 +198,49 @@ class Blogs extends CI_Controller {
 		$entry = $this->blogs->getRecord($id);
 		
 		// POST data input
-		if ($this->input->is_post('title'))
+		if ($this->input->is_post())
 		{
-			
-		}		
-		
+			if ($this->form_validation->run())
+			{
+				// logic with model
+				
+				// load model blogs 
+				$this->load->model('model_blogs', 'blogs');
+				
+				// prepare data ton insert
+				$data = array(
+					'user_id'    => 0,
+					'title'      => $this->input->post('title', true),
+					'body'       => $this->input->post('body')
+				);
+				$blogs_id = $this->blogs->update($data, $id);
+				
+				/*	
+				$blogs_id = $this->blogs->insert($data);
+				
+				// if valid all processes
+				if ($blogs_id !== false)
+				{
+					// set flash data					
+					$message = 'Content has been added.';
+					$this->session->set_flashdata('success', $message);
+					
+					// redirect application to listing
+					redirect('blogs/records#added-id-'.$blogs_id);					
+				}				
+				*/
+				
+				// error something I don't know
+				show_error('Error unknown');				
+			}
+			// validate failed
+			else
+			{
+				$errors = validation_errors();
+				$view['errors'] = $errors;
+			}
+		}
+
 		// prepare data to view
 		$view['entry'] = $entry;
 		
