@@ -256,6 +256,7 @@ class Blogs extends CI_Controller {
 	public function delete($id)
 	{
 		
+		$this->load->view('blogs/delete');
 	}
 	
 }
