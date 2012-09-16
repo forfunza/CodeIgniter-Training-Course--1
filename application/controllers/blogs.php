@@ -194,8 +194,11 @@ class Blogs extends CI_Controller {
 		// load model
 		$this->load->model('model_blogs', 'blogs');
 		
+		// get a record
 		$entry = $this->blogs->getRecord($id);
-		alert( $entry, true );
+		
+		// prepare data to view
+		$view['entry'] = $entry;
 		
 		// load view
 		$this->load->view('blogs/edit', $view);
