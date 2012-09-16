@@ -97,7 +97,10 @@ class model_blogs extends CI_Model {
 	
 	public function delete($id)
 	{
+		if (empty($id)) return false;
 		
+		$this->db->delete('blogs', array('id' => $id));
+		return true;
 	}
 	
 }

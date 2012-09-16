@@ -255,7 +255,17 @@ class Blogs extends CI_Controller {
 	 */
 	public function delete($id)
 	{
-		
+		if ($this->input->is_post('confirm'))
+		{
+			//echo 'confirm to delete'; exit(0);
+			$this->load->model('model_blogs', 'blogs');
+			if ($this->blogs->delete($id))
+			{
+				redirect('blogs/records#deleted-'.$id);
+			}
+			// error something I don't know
+			show_error('Error unknown');		
+		}
 		$this->load->view('blogs/delete');
 	}
 	
