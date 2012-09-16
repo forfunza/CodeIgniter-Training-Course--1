@@ -5,20 +5,59 @@ class Labs extends CI_Controller {
 	public function index()
 	{
 		
-	}	
+	}
+	
+	public function orm()
+	{
+		/*$user = new User();
+		$user->where('id', 1)->get();
+		
+		$blogs = $user->blog->get();
+		
+		foreach ($blogs as $blog)
+		{
+			echo '<p>'.$blog->title.'</p>';
+		}*/
+	}
+	
+	public function orm2()
+	{
+		$blog = new Blog();
+		$blog->where('id', 9)->get();
+		
+		$user =  $blog->user->get();
+		
+		echo $user->username;
+	}
+	
+	public function orm3()
+	{
+		$blog = new Blog();
+		$blog->where('id', 10)->get();
+		$blog->user_id = 100;
+		$blog->save();
+	}
 	
 	public function template()
 	{
 		$view = array();
 		
-
 		$this->template->set_template('frontend');
+		
+		
 	
-		//$this->template->set_template('frontend');
+		$this->template->set_template('frontend');
 		$this->template->write('title', 'Custom my title OKKKKK', true);
 		
 		$this->template->write_view('content', 'labs/template', $view);
 		
+		$this->template->render();
+	}
+	
+	public function theme()
+	{
+		$this->template->set_theme('spring')->set_template('frontend');
+		$this->template->write('content', 'Draw Something');
 		$this->template->render();
 	}
 	
