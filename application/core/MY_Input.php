@@ -11,7 +11,11 @@ class MY_Input extends CI_Input {
 	 */
 	public function is_get($compare=null)
 	{
-		return ((isset($_GET) && count($_GET))) && (isset($_GET[$compare]));
+		if (!is_null($compare))
+		{
+			return isset($_GET[$compare]);
+		}	
+		return (isset($_GET) && count($_GET) > 0);
 	}
 	
 	/**
@@ -23,7 +27,11 @@ class MY_Input extends CI_Input {
 	 */
 	public function is_post($compare=null)
 	{
-		return ((isset($_POST) && count($_POST))) && (isset($_POST[$compare]));
+		if (!is_null($compare))
+		{
+			return isset($_POST[$compare]);
+		}	
+		return (isset($_POST) && count($_POST) > 0);
 	}
 	
 }

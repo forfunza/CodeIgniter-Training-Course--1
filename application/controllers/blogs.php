@@ -198,7 +198,7 @@ class Blogs extends CI_Controller {
 		$entry = $this->blogs->getRecord($id);
 		
 		// POST data input
-		if ($this->input->is_post())
+		if ($this->input->is_post('title'))
 		{
 			if ($this->form_validation->run())
 			{
@@ -214,6 +214,8 @@ class Blogs extends CI_Controller {
 					'body'       => $this->input->post('body')
 				);
 				$blogs_id = $this->blogs->update($data, $id);
+				
+				alert( $blogs_id, true );
 				
 				/*	
 				$blogs_id = $this->blogs->insert($data);
