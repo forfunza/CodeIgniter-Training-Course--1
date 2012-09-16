@@ -1,20 +1,29 @@
 <?php
 
 class MY_Input extends CI_Input {
-
-	public function __construct()
+	
+	/**
+	 * Is GET 
+	 * 
+	 * @access public
+	 * @param  string $compare (default: null)
+	 * @return bool
+	 */
+	public function is_get($compare=null)
 	{
-		parent::__construct();
+		return ((isset($_GET) && count($_GET))) && (isset($_GET[$compare]));
 	}
 	
-	public function is_get()
+	/**
+	 * Is POST 
+	 * 
+	 * @access public
+	 * @param  string $compare (default: null)
+	 * @return bool
+	 */
+	public function is_post($compare=null)
 	{
-		return (isset($_GET) && count($_GET));
-	}
-	
-	public function is_post()
-	{
-		return (isset($_POST) && count($_POST));
+		return ((isset($_POST) && count($_POST))) && (isset($_POST[$compare]));
 	}
 	
 }

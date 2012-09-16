@@ -197,6 +197,12 @@ class Blogs extends CI_Controller {
 		// get a record
 		$entry = $this->blogs->getRecord($id);
 		
+		// POST data input
+		if ($this->input->is_post('title'))
+		{
+			
+		}		
+		
 		// prepare data to view
 		$view['entry'] = $entry;
 		

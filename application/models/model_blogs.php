@@ -1,6 +1,22 @@
 <?php
 
 class model_blogs extends CI_Model {
+
+	private $_validations = array();
+	
+	
+	public function __construct()
+	{
+		$this->_validations = array(
+			'add' => ''
+		);
+		parent::__construct();
+	}
+	
+	public function getRule($group)
+	{
+		return $this->_validations[$group];
+	}
 	
 	/**
 	 * Get all records with filter
