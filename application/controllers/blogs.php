@@ -183,7 +183,21 @@ class Blogs extends CI_Controller {
 	 */
 	public function edit($id='')
 	{
-		echo 'This is Edit';
+		if (empty($id)) {
+			//show_error('Required ID to look up entry!');
+			show_404();
+		}
+				
+		// define variables
+		$view = array();
+		
+		// load model
+		$this->load->model('model_blogs', 'blogs');
+		
+		
+		
+		// load view
+		$this->load->view('blogs/edit', $view);
 	}
 	
 	/**
