@@ -76,9 +76,16 @@ $template['default']['parse_template'] = FALSE;
 
 $template['frontend']['template'] = 'master/frontend';
 $template['frontend']['regions'] = array(
-	'header',
+	'title' => array(
+		'content' => array('This is my title')
+	),
+	'header' => array(
+		'content' => array('Header')
+	),
 	'content',
-	'footer'
+	'footer' => array(
+		'content' => array('Footer')
+	)
 );
 $template['frontend']['parser'] = 'parser';
 $template['frontend']['parser_method'] = 'parse';
