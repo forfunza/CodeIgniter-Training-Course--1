@@ -92,6 +92,14 @@ $template['frontend']['parser_method'] = 'parse';
 $template['frontend']['parse_template'] = FALSE;
 
 
+/*
+|--------------------------------------------------------------------------
+| Backend Template Configuration
+|--------------------------------------------------------------------------
+*/
+$template['backend']['template'] = '';
+
+
 
 /* End of file template.php */
 /* Location: ./system/application/config/template.php */

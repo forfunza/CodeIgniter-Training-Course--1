@@ -38,9 +38,6 @@ class Labs extends CI_Controller {
 		';
 		
 		$this->parser->parse_string($tpl, $data);
-		
-		
-		//$this->parser->parse('labs/parser', $data);
 	}
 	
 	public function mustache()
