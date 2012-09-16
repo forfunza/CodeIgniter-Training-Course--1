@@ -48,23 +48,26 @@ class Blogs extends CI_Controller {
 	{
 		$view = array();
 		
+		// load model
 		$this->load->model('model_blogs', 'blogs');
 		
 		// get flash data 
 		$success = $this->session->flashdata('success');
 		
+		// logic with model
+		$filters     = array();
+		$currentPage = 1;
+		$limit       = 30;
+		$orders      = array();
+				
+		$entries = $this->blogs->getAll($filters, $currentPage, $limit, $orders);
+		
+		print_r($entries);
+		
 		$view['success'] = $success;
 		
-		print_r($this->blogs->getRecord(5));
 		
-		/*
-				
-		logic code with model
-		
-		*/
-		
-		
-		//$this->load->view('blogs/records');
+		$this->load->view('blogs/records', $view);
 	}
 	
 	/**

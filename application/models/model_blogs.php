@@ -2,9 +2,37 @@
 
 class model_blogs extends CI_Model {
 	
-	public function getAll()
+	/**
+	 * Get all records with filter
+	 * 
+	 * @access public
+	 * @param  array $filters
+	 * @param  int $page (default: 1)
+	 * @param  int $limit (default: 20)
+	 * @param  array $orders (default: array())
+	 * @return object
+	 */
+	public function getAll(array $filters=array(), $page=1, $limit=20, array $orders=array())
 	{
+		$this->db->select()->from('blogs')->limit($limit);
 		
+		/*if (isset($filters['user_id'])) 
+		{
+			$userId = $filters['user_id'];
+			$this
+				->db
+				->join('users', 'blogs.user_id=users.id')
+				->where('blogs.user_id', $userId);
+		}*/
+		
+		if (isset($filters['search'])) 
+		{
+			$search = $filters['search'];
+			$this->db->like($search);
+		}
+		
+		$query = $this->db->get();
+		return $query->result();
 	}	
 	
 	public function getRecord($id)
