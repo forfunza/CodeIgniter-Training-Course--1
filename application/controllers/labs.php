@@ -9,15 +9,15 @@ class Labs extends CI_Controller {
 	
 	public function orm()
 	{
-		/*$user = new User();
-		$user->where('id', 1)->get();
+		$user = new User();
+		$u = $user->where('id', 1)->get();
 		
-		$blogs = $user->blog->get();
+		$blogs = $u->blog->get();
 		
 		foreach ($blogs as $blog)
 		{
 			echo '<p>'.$blog->title.'</p>';
-		}*/
+		}
 	}
 	
 	public function orm2()
