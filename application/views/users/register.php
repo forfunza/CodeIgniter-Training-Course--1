@@ -1,6 +1,13 @@
 <div class="page-header">
 	<h1>Register</h1>
 </div>
+
+<?php if (isset($errors)) : ?>
+<div class="alert-error">
+	<?php echo $errors; ?>
+</div>
+<?php endif; ?>
+
 <!-- <h2>Default styles</h2> -->
 <?php echo form_open('users/register', array('class'=>'form-horizontal')); ?>
 	<fieldset>

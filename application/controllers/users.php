@@ -31,13 +31,14 @@ class Users extends CI_Controller {
 			);
 			$this->form_validation->set_rules($rules);
 			
-			if ($this->from_validation->run() === true)
+			if ($this->form_validation->run() === true)
 			{
-				
+				// load model and process command				
 			}
 			else
 			{
-				
+				$errors = validation_errors();
+				$view['errors'] = $errors;
 			}
 		
 			/*$user = new User();
@@ -48,7 +49,7 @@ class Users extends CI_Controller {
 			exit(0);*/
 		}
 		
-		$this->template->write_view('content', 'users/register');
+		$this->template->write_view('content', 'users/register', $view);
 		
 		$this->template->render();
 	}
