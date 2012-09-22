@@ -6,7 +6,7 @@
  * @access public
  * @return void
  */
-function isLoggednIn()
+function isLoggedIn()
 {
 	$CI =& get_instance();
 	$CI->load->model('model_auth', 'auth');	

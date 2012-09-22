@@ -34,6 +34,7 @@ class Auth extends CI_Controller {
 				{
 					$this->auth->login($uid);
 					redirect('/auth/check#logged_in');
+					//redirect('blogs/admin#logged_in');
 				}
 				else
 				{
