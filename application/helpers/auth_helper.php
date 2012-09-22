@@ -39,10 +39,10 @@ function authUserInfo()
 function userInfo($uid)
 {
 	$CI =& get_instance();
-	$CI->load->model('users/user');
+	$CI->load->model('users/model_users', 'users');
 	
-	$user = new User();
-	$user->where('id', $uid);
+	//$user = new User();
+	//$user->where('id', $uid);
 	
-	return $user->get();
+	return $CI->users->getRecord($uid);
 }

@@ -6,6 +6,8 @@ class model_auth extends CI_Model {
 	
 	public static function attemp($email, $password)
 	{
+		$CI =& get_instance();
+		$CI->load->model('users/user');
 		$user = new User();
 		$user->where('email', $email)->where('password', $password);		
 		return $uid = $user->get()->id;
