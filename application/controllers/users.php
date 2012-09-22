@@ -1,8 +1,6 @@
 <?php
 
-class Users extends CI_Controller {
-
-	
+class Users extends CI_Controller {	
 	
 	public function register()
 	{
@@ -12,13 +10,11 @@ class Users extends CI_Controller {
 		{
 			$user = new User();
 			//$user->where('id', 19)->get();
-			$user->username = 'www'; //$this->input->post('email', true);
+			$user->username = $this->input->post('email', true);
 			$user->password = $this->input->post('password', true);
 			$user->save();
 			exit(0);
 		}
-		
-		
 		
 		$this->template->write_view('content', 'users/register');
 		
