@@ -4,7 +4,7 @@
 <?php endif; ?>
 
 <!-- Form Input -->
-<?php echo form_open('blogs/add'); ?>
+<?php echo form_open('blogs/admin/add'); ?>
 	<fieldset>
 		<legend>Form Blogs Add</legend>
 		<p>

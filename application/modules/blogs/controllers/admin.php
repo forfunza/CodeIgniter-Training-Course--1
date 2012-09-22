@@ -1,6 +1,6 @@
 <?php
 
-class Admin extends MX_Controller {
+class Admin extends MY_Controller {
 	
 	/**
 	 * Records 
@@ -42,9 +42,9 @@ class Admin extends MX_Controller {
 		
 		$this->template->add_js('http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.2/jquery.cookie.js');
 		
-		$this->template->add_js('
+		/*$this->template->add_js('
 			alert("This is embed code");
-		', 'embed');
+		', 'embed');*/
 		
 		// load view
 		//$this->load->view('admin-index', $view);
@@ -110,7 +110,7 @@ class Admin extends MX_Controller {
 			//set rules
 			$this->form_validation->set_rules($rules);*/
 			
-			if ($this->form_validation->run())
+			if ($this->form_validation->run('blogs/admin/add'))
 			{
 				// logic with model
 				
