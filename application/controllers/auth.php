@@ -1,6 +1,6 @@
 <?php
 
-class Auth extends CI_Controller {
+class Auth extends MY_Controller {
 	
 	public function login()
 	{
@@ -33,8 +33,8 @@ class Auth extends CI_Controller {
 				if ($uid > 0)
 				{
 					$this->auth->login($uid);
-					redirect('/auth/check#logged_in');
-					//redirect('blogs/admin#logged_in');
+					//redirect('/auth/check#logged_in');
+					redirect('blogs/admin#logged_in');
 				}
 				else
 				{
