@@ -64,6 +64,60 @@ class CI_Template extends TemplateBase {
 			return $locate;
 		}		
 		return false;
-	}	
+	}
+	
+	 function add_js($script, $type = 'import', $defer = FALSE)
+   {
+      $success = TRUE;
+      $js = NULL;
+      
+      $this->CI->load->helper('url');
+      
+      switch ($type)
+      {
+         case 'import':
+         
+         	if (preg_match('|^http|', $script)) {
+	         	$filepath = $script;
+         	}
+         	else {
+           		$filepath = base_url() . $script;
+           	}
+            
+            
+            
+            $js = '<script src="'. $filepath .'"';
+            if ($defer)
+            {
+               $js .= ' defer="defer"';
+            }
+            $js .= "></script>";
+            break;
+         
+         case 'embed':
+            $js = '<script ';
+            if ($defer)
+            {
+               $js .= ' defer="defer"';
+            }
+            $js .= ">";
+            $js .= $script;
+            $js .= '</script>';
+            break;
+            
+         default:
+            $success = FALSE;
+            break;
+      }
+      
+      // Add to js array if it doesn't already exist
+      if ($js != NULL && !in_array($js, $this->js))
+      {
+         $this->js[] = $js;
+         $this->write('_scripts', $js);
+      }
+      
+      return $success;
+   }
 	
 }

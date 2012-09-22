@@ -1,40 +1,6 @@
 <?php
 
-class Blogs extends CI_Controller {
-
-	public function __construct()
-	{
-		parent::__construct();
-	}
-	
-	/**
-	 * Index 
-	 *
-	 * Front-End
-	 * List blog entries on front-end
-	 * 
-	 * @access public
-	 * @return string HTML
-	 */
-	public function index()
-	{
-		//echo $this->input->is_post();
-	}
-	
-	/**
-	 * View 
-	 *
-	 * Front-End
-	 * Look up blog entry specific id
-	 * 
-	 * @access public
-	 * @param  integer $id
-	 * @return string HTML
-	 */
-	public function view($id)
-	{
-		
-	}
+class Admin extends MX_Controller {
 	
 	/**
 	 * Records 
@@ -44,8 +10,10 @@ class Blogs extends CI_Controller {
 	 * @access public
 	 * @return string HTML
 	 */
-	public function records()
+	public function index()
 	{
+		$this->template->set_template('backend');
+		
 		$view = array();
 		
 		// load model
@@ -72,8 +40,16 @@ class Blogs extends CI_Controller {
 		$view['success'] = $success;
 		$view['entries'] = $entries;
 		
+		$this->template->add_js('http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.2/jquery.cookie.js');
+		
+		$this->template->add_js('
+			alert("This is embed code");
+		', 'embed');
+		
 		// load view
-		$this->load->view('blogs/records', $view);
+		//$this->load->view('admin-index', $view);
+		$this->template->write_view('content', 'admin-index', $view);
+		$this->template->render();
 	}
 	
 	/**
@@ -104,6 +80,8 @@ class Blogs extends CI_Controller {
 	 */
 	public function add()
 	{
+		$this->template->set_template('backend');
+		
 		$view = array();	
 	
 		if ($this->input->is_post())
@@ -155,7 +133,7 @@ class Blogs extends CI_Controller {
 					$this->session->set_flashdata('success', $message);
 					
 					// redirect application to listing
-					redirect('blogs/records#added-id-'.$blogs_id);					
+					redirect('blogs/admin#added-id-'.$blogs_id);					
 				}
 				// error something I don't know
 				show_error('Error unknown');				
@@ -168,7 +146,9 @@ class Blogs extends CI_Controller {
 			}			
 		}
 		
-		$this->load->view('blogs/add', $view);
+		//$this->load->view('admin-add', $view);
+		$this->template->write_view('content', 'admin-add', $view);
+		$this->template->render();
 	}
 	
 	/**
@@ -187,6 +167,8 @@ class Blogs extends CI_Controller {
 			//show_error('Required ID to look up entry!');
 			show_404();
 		}
+		
+		$this->template->set_template('backend');
 				
 		// define variables
 		$view = array();
@@ -222,7 +204,7 @@ class Blogs extends CI_Controller {
 					$this->session->set_flashdata('success', $message);
 					
 					// redirect application to listing
-					redirect('blogs/records#edited-id-'.$blogs_id);					
+					redirect('blogs/admin#edited-id-'.$blogs_id);					
 				}				
 				
 				// error something I don't know
@@ -240,7 +222,9 @@ class Blogs extends CI_Controller {
 		$view['entry'] = $entry;
 		
 		// load view
-		$this->load->view('blogs/edit', $view);
+		//$this->load->view('admin-edit', $view);
+		$this->template->write_view('content', 'admin-edit', $view);
+		$this->template->render();
 	}
 	
 	/**
@@ -255,18 +239,26 @@ class Blogs extends CI_Controller {
 	 */
 	public function delete($id)
 	{
+		$this->template->set_template('backend');
+				
+		// define variables
+		$view = array();
+		
 		if ($this->input->is_post('confirm'))
 		{
 			//echo 'confirm to delete'; exit(0);
 			$this->load->model('model_blogs', 'blogs');
 			if ($this->blogs->delete($id))
 			{
-				redirect('blogs/records#deleted-'.$id);
+				redirect('blogs/admin#deleted-'.$id);
 			}
 			// error something I don't know
 			show_error('Error unknown');		
 		}
-		$this->load->view('blogs/delete');
+		
+		//$this->load->view('admin-delete');
+		$this->template->write_view('content', 'admin-delete', $view);
+		$this->template->render();
 	}
 	
 }

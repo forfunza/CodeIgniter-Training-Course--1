@@ -9,7 +9,7 @@
 | "default" group).
 |
 */
-$template['active_template'] = 'default';
+$template['active_template'] = 'frontend';
 
 /*
 |--------------------------------------------------------------------------
@@ -97,7 +97,23 @@ $template['frontend']['parse_template'] = FALSE;
 | Backend Template Configuration
 |--------------------------------------------------------------------------
 */
-$template['backend']['template'] = '';
+
+$template['backend']['template'] = 'master/backend';
+$template['backend']['regions'] = array(
+	'title' => array(
+		'content' => array('This is Administrator Layout')
+	),
+	'header' => array(
+		'content' => array('Admin Page')
+	),
+	'content',
+	'footer' => array(
+		'content' => array('Admin Footer')
+	)
+);
+$template['backend']['parser'] = 'parser';
+$template['backend']['parser_method'] = 'parse';
+$template['backend']['parse_template'] = FALSE;
 
 
 

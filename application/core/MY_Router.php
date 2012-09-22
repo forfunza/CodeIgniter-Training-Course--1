@@ -1,16 +1,6 @@
-<?php
+<?php (defined('BASEPATH')) OR exit('No direct script access allowed');
 
-class MY_Router extends CI_Router {
-	
-	public function _validate_request($segments)
-	{
-		// Does the requested controller exist in the root folder?
-		/*if (!file_exists(APPPATH.'controllers/'.$segments[0].'.php'))
-		{
-			$user = array_shift($segments);
-			array_push($segments, $user);
-		}*/	
-		return parent::_validate_request($segments);
-	}
-	
-}
+/* load the MX_Router class */
+require APPPATH."third_party/MX/Router.php";
+
+class MY_Router extends MX_Router {}
