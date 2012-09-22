@@ -47,4 +47,17 @@ class Mapper extends CI_Controller {
 		
 	}
 	
+	public function ex5()
+	{
+		$user = new User();
+		$user->where('id',  5)->get();
+		
+		$blogs = $user->blog->get();
+		
+		foreach ($blogs as $entry)
+		{
+			echo '<p>'.$entry->title.'</p>';
+		}
+	}
+	
 }	
