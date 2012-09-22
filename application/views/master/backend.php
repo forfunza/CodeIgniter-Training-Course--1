@@ -41,23 +41,32 @@
 						</ul>
 						<ul class="nav pull-right">
 							<li class="active">
-								<a href="#">
+								<a href="<?php echo site_url('users/register'); ?>">
 									<i class="icon-user"></i>
 									<span>Register</span>
 								</a>
 							</li>
+							<?php if (isLoggedIn()) : ?>
 							<li>
-								<a href="#about">
-									<i class="icon-globe"></i>
-									<span>Sign In</span>
-								</a>
-							</li>
-							<li>
-								<a href="#contact">
+								<a href="<?php echo site_url('auth/logout'); ?>">
 									<i class="icon-off"></i>
 									<span>Sign Out</span>
 								</a>
 							</li>
+							<li>								
+								<a href="#user">
+									<span>Welcome,</span>
+									<?php echo authUserInfo()->email; ?>
+								</a>
+							</li>
+							<?php else : ?>
+							<li>
+								<a href="<?php echo site_url('auth/login'); ?>">
+									<i class="icon-globe"></i>
+									<span>Sign In</span>
+								</a>
+							</li>
+							<?php endif; ?>
 						</ul>						
 					</div><!--/.nav-collapse -->
 				</div>

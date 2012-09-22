@@ -27,7 +27,8 @@ class model_auth extends CI_Model {
 	
 	public function forget()
 	{
-		
+		$this->session->unset_userdata($this->auth_session_name);
+		return true;
 	}
 	
 }

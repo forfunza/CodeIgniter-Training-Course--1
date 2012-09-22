@@ -1,10 +1,16 @@
 <?php
 
 class Auth extends MY_Controller {
+
+	public function index()
+	{
+		redirect('auth/login');
+	}
 	
 	public function login()
 	{
-		$this->template->set_template('frontend');
+		//alert( authUserInfo(), true );
+		$this->template->set_template('backend');
 		
 		$view = array();
 		
@@ -53,12 +59,19 @@ class Auth extends MY_Controller {
 		$this->template->render();
 	}
 	
-	public function check()
+	public function logout()
+	{
+		$this->load->model('auth/model_auth', 'auth');
+		$this->auth->forget();
+		redirect('/#exited');
+	}
+	
+	/*public function check()
 	{
 		$this->load->model('model_auth', 'auth');
 		
 		$userdata = $this->auth->user();
 		alert ($userdata );
-	}
+	}*/
 	
 }

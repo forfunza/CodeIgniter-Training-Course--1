@@ -1,10 +1,10 @@
 <?php
 
-class Users extends CI_Controller {	
+class Users extends MY_Controller {	
 	
 	public function register()
 	{
-		$this->template->set_template('frontend');
+		$this->template->set_template('backend');
 		
 		$view = array();
 		
@@ -16,7 +16,7 @@ class Users extends CI_Controller {
 				array(
 					'field' => 'email', 
 					'label' => 'Email', 
-					'rules' => 'required|valid_email'
+					'rules' => 'required|valid_email|is_unique[users.email]'
 				),
 				array(
 					'field' => 'password', 
