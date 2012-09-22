@@ -3,7 +3,7 @@
 </div>
 
 <?php if (isset($errors)) : ?>
-<div class="alert-error">
+<div class="alert alert-error">
 	<?php echo $errors; ?>
 </div>
 <?php endif; ?>
